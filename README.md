@@ -131,13 +131,6 @@ The application uses **keyword-based matching** to respond to user queries:
 - ⚠️ Firefox: Limited voice support
 - ⚠️ Safari: Requires permissions handling
 
-### Edge Cases Handled:
-
-1. **Empty/Silent Speech**: Shows "No speech detected" message
-2. **Microphone Denied**: Alert shown with instructions
-3. **Unknown Query**: Fallback response provided
-4. **Rapid Clicks**: Button disabled during speech output
-5. **Long Responses**: Auto-scroll ensures visibility
 
 ### Known Issues:
 
@@ -181,15 +174,6 @@ The application uses **keyword-based matching** to respond to user queries:
 - Speak clearly and directly
 - Try rephrasing your question
 - Check supported queries in cannedResponses.js
-
-## 📝 Assumptions Made
-
-1. Users will use modern browsers (Chrome/Edge preferred)
-2. Microphone access will be granted
-3. Internet connection available (for voice APIs)
-4. English language queries only (can be extended)
-5. No authentication/user accounts needed
-6. Conversation history clears on page refresh
 
 
 ## 📄 License
