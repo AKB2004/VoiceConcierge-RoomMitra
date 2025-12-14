@@ -1,7 +1,6 @@
-/**
- * Speech Recognition (STT) - Speech to Text
- * Uses browser's Web Speech API
- */
+
+ //Speech Recognition (STT) - Speech to Text
+
 
 let recognition = null
 

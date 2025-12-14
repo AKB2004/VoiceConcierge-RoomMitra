@@ -1,7 +1,6 @@
-/**
- * Speech Synthesis (TTS) - Text to Speech
- * Uses browser's Web Speech API
- */
+
+ //Speech Synthesis (TTS) - Text to Speech
+ 
 
 /**
  * Speak text using browser's speech synthesis

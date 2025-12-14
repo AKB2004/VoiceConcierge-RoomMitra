@@ -4,7 +4,7 @@ export default function MicrophoneButton({ isListening, onClick, isSpeaking }) {
   return (
     <button
       onClick={onClick}
-      className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl transition-all duration-300 ${
+      className={`w-14 h-14 md:w-10 md:h-10 rounded-full flex items-center justify-center text-2xl md:text-3xl transition-all duration-300 ${
         isListening ? 'recording' : ''
       }`}
       style={{
