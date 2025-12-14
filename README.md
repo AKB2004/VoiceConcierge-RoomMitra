@@ -1,36 +1,205 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎤 Voice Concierge - Room Mitra
 
-## Getting Started
+An AI-powered hotel voice assistant web application built with Next.js, featuring Speech-to-Text (STT) and Text-to-Speech (TTS) capabilities.
 
-First, run the development server:
+## 🌟 Features
+
+- ✅ **Voice Input**: Browser-based speech recognition (STT)
+- ✅ **Voice Output**: Natural text-to-speech responses (TTS)
+- ✅ **Rule-Based Q&A**: Keyword matching for hotel queries
+- ✅ **Chat Interface**: Clean, modern UI with glassmorphism design
+- ✅ **Dark/Light Theme**: Toggle between themes
+- ✅ **Responsive Design**: Works on mobile and desktop
+- ✅ **No Backend Required**: All processing happens in the browser
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ installed
+- Modern browser (Chrome, Edge recommended for best voice support)
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone <your-repo-url>
+cd voice-concierge
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Create production build
+npm run build
 
-## Learn More
+# Start production server
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+voice-concierge/
+├── src/
+│   ├── app/
+│   │   ├── page.js              # Main app page
+│   │   ├── layout.js            # Root layout
+│   │   └── globals.css          # Global styles
+│   ├── components/
+│   │   ├── LandingPage.js       # Welcome screen
+│   │   ├── ChatPage.js          # Chat interface
+│   │   ├── ChatMessage.js       # Message bubble component
+│   │   ├── MicrophoneButton.js  # Voice input button
+│   │   └── ThemeToggle.js       # Theme switcher
+│   ├── utils/
+│   │   ├── speechRecognition.js # STT logic
+│   │   ├── speechSynthesis.js   # TTS logic
+│   │   └── queryMatcher.js      # Q&A matching
+│   └── data/
+│       └── cannedResponses.js   # Predefined responses
+├── public/
+└── package.json
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧠 How Query Matching Works
 
-## Deploy on Vercel
+The application uses **keyword-based matching** to respond to user queries:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. User speaks → STT converts to text
+2. Text is normalized (lowercase, trimmed)
+3. Query is matched against predefined keywords
+4. Best matching response is selected
+5. Response is spoken using TTS
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Example:
+
+**User**: "I need some water"
+- **Keywords matched**: ['water', 'bottle']
+- **Response**: "Sure! Housekeeping will deliver two bottles of drinking water shortly."
+
+### Supported Queries:
+
+- **Room Service**: food, breakfast, menu, order
+- **Housekeeping**: clean room, towel, linen
+- **WiFi**: wifi, internet, password
+- **Facilities**: pool, gym, fitness
+- **Hotel Info**: checkout, location, address
+
+## 🧪 Testing Documentation
+
+### Manual Testing Done:
+
+#### 1. Speech Recognition (STT)
+- ✅ Microphone button starts/stops recording
+- ✅ Real-time transcription displayed
+- ✅ Handles "no speech detected" gracefully
+- ✅ Browser permission requests work correctly
+- ✅ Multiple queries processed correctly
+
+#### 2. Query Matching
+- ✅ Exact keyword matches work ("water" → water response)
+- ✅ Partial matches work ("I need water please" → matches)
+- ✅ Case-insensitive matching ("WIFI" = "wifi")
+- ✅ Fallback message for unrecognized queries
+- ✅ Multiple keyword variations supported
+
+#### 3. Speech Synthesis (TTS)
+- ✅ Responses are spoken clearly
+- ✅ Speech can be interrupted
+- ✅ Natural voice selection works
+- ✅ No conflicts with STT
+
+#### 4. UI/UX
+- ✅ Landing page animations smooth
+- ✅ Chat messages appear with animation
+- ✅ Auto-scroll to latest message
+- ✅ Theme toggle works instantly
+- ✅ Responsive on mobile/tablet/desktop
+- ✅ Glassmorphism effects render properly
+
+#### 5. Browser Compatibility
+- ✅ Chrome/Edge: Full support
+- ⚠️ Firefox: Limited voice support
+- ⚠️ Safari: Requires permissions handling
+
+### Edge Cases Handled:
+
+1. **Empty/Silent Speech**: Shows "No speech detected" message
+2. **Microphone Denied**: Alert shown with instructions
+3. **Unknown Query**: Fallback response provided
+4. **Rapid Clicks**: Button disabled during speech output
+5. **Long Responses**: Auto-scroll ensures visibility
+
+### Known Issues:
+
+1. **Browser Support**: Speech APIs work best in Chrome/Edge
+2. **Voice Quality**: Depends on system's TTS voices
+3. **Accent Recognition**: May have difficulty with strong accents
+4. **Background Noise**: Can affect recognition accuracy
+
+## 🎨 Design Decisions
+
+- **Glassmorphism Theme**: Modern, premium aesthetic matching hotel brand
+- **Black/White Base**: Professional, accessible color scheme
+- **Indigo/Purple Accents**: Vibrant, contemporary feel
+- **No Backend**: Simplified deployment, faster performance
+- **State Management**: React hooks (useState) for conversation history
+
+## 🔮 Future Improvements
+
+1. **Fuzzy Matching**: Implement Levenshtein distance for better query matching
+2. **Multi-language Support**: Add support for Hindi, Spanish, etc.
+3. **Voice Selection**: Let users choose TTS voice
+4. **Conversation Export**: Download chat history as PDF
+5. **Context Awareness**: Remember previous queries for better responses
+6. **Analytics**: Track most common queries
+7. **Admin Dashboard**: Manage responses without code changes
+8. **Integration**: Connect to actual hotel systems (PMS, POS)
+
+## 🐛 Troubleshooting
+
+### Microphone Not Working
+- Ensure browser has microphone permission
+- Check system microphone is working
+- Try using Chrome/Edge browsers
+
+### No Voice Output
+- Check system volume
+- Ensure browser allows audio autoplay
+- Try refreshing the page
+
+### Queries Not Matching
+- Speak clearly and directly
+- Try rephrasing your question
+- Check supported queries in cannedResponses.js
+
+## 📝 Assumptions Made
+
+1. Users will use modern browsers (Chrome/Edge preferred)
+2. Microphone access will be granted
+3. Internet connection available (for voice APIs)
+4. English language queries only (can be extended)
+5. No authentication/user accounts needed
+6. Conversation history clears on page refresh
+
+
+## 📄 License
+
+This project is created as an internship assignment for Room Mitra.
+
+## 👨‍💻 Author
+
+Created for Room Mitra SWE Intern Hiring
+
+---
+
+**Note**: This application uses browser APIs for speech recognition and synthesis. Performance may vary across different browsers and devices.
