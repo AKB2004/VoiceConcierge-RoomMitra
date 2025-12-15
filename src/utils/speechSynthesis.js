@@ -24,15 +24,14 @@ export function speak(text, onEnd = null, options = {}) {
   const utterance = new SpeechSynthesisUtterance(text)
 
   // Configuration
-  utterance.rate = options.rate || 1.0  // Speed (0.1 to 10)
-  utterance.pitch = options.pitch || 1.0  // Pitch (0 to 2)
-  utterance.volume = options.volume || 1.0  // Volume (0 to 1)
+  utterance.rate = options.rate || 1.0  
+  utterance.pitch = options.pitch || 1.0 
+  utterance.volume = options.volume || 1.0 
   utterance.lang = options.lang || 'en-US'
 
-  // Try to use a more natural voice if available
+
   const voices = window.speechSynthesis.getVoices()
   if (voices.length > 0) {
-    // Prefer Google/Microsoft voices for better quality
     const preferredVoice = voices.find(voice => 
       voice.name.includes('Google') || 
       voice.name.includes('Microsoft') ||
@@ -58,25 +57,20 @@ export function speak(text, onEnd = null, options = {}) {
   window.speechSynthesis.speak(utterance)
 }
 
-/**
- * Stop ongoing speech
- */
+
+ //Stop ongoing speech
 export function stopSpeaking() {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel()
   }
 }
 
-/**
- * Check if speech synthesis is supported
- */
+// Check if speech synthesis is supported
 export function isSpeechSynthesisSupported() {
   return 'speechSynthesis' in window
 }
 
-/**
- * Get available voices
- */
+//Get available voices
 export function getAvailableVoices() {
   if (!('speechSynthesis' in window)) {
     return []
@@ -84,10 +78,7 @@ export function getAvailableVoices() {
   return window.speechSynthesis.getVoices()
 }
 
-/**
- * Load voices (needed for some browsers)
- * Call this on app initialization
- */
+
 export function loadVoices(callback) {
   if (!('speechSynthesis' in window)) {
     callback && callback([])
@@ -99,7 +90,6 @@ export function loadVoices(callback) {
   if (voices.length > 0) {
     callback && callback(voices)
   } else {
-    // Some browsers load voices asynchronously
     window.speechSynthesis.onvoiceschanged = () => {
       voices = window.speechSynthesis.getVoices()
       callback && callback(voices)

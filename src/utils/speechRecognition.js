@@ -24,12 +24,12 @@ export function startSpeechRecognition(onTranscript, onEnd, onError) {
   recognition = new SpeechRecognition()
 
   // Configuration
-  recognition.continuous = false  // Stop after user stops speaking
-  recognition.interimResults = true  // Show results while speaking
-  recognition.lang = 'en-US'  // Language
+  recognition.continuous = false  
+  recognition.interimResults = true  
+  recognition.lang = 'en-US'  
   recognition.maxAlternatives = 1
 
-  // Event: Results received
+
   recognition.onresult = (event) => {
     let interimTranscript = ''
     let finalTranscript = ''
@@ -43,23 +43,19 @@ export function startSpeechRecognition(onTranscript, onEnd, onError) {
       }
     }
 
-    // Show interim results
     if (interimTranscript) {
       onTranscript && onTranscript(interimTranscript)
     }
 
-    // When final result is available
     if (finalTranscript) {
       onEnd && onEnd(finalTranscript)
     }
   }
 
-  // Event: Speech recognition ends
   recognition.onend = () => {
     onError && onError('Speech recognition ended')
   }
 
-  // Event: Error occurred
   recognition.onerror = (event) => {
     console.error('Speech recognition error:', event.error)
     
@@ -83,9 +79,7 @@ export function startSpeechRecognition(onTranscript, onEnd, onError) {
   }
 }
 
-/**
- * Stop speech recognition
- */
+// Stop speech recognition
 export function stopSpeechRecognition() {
   if (recognition) {
     try {
@@ -97,9 +91,7 @@ export function stopSpeechRecognition() {
   }
 }
 
-/**
- * Check if speech recognition is supported
- */
+//Check if speech recognition is supported
 export function isSpeechRecognitionSupported() {
   return 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window
 }

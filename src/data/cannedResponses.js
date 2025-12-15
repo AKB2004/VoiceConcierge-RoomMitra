@@ -54,4 +54,4 @@ export const cannedResponses = [
   },
 ]
 
-export const fallbackResponse = "I'm sorry, I didn't understand that. Could you please rephrase? You can ask me about room service, housekeeping, WiFi, facilities, or hotel information."
+export const fallbackResponse = "I'm sorry, I didn't understand that. Could you please rephrase? You can ask me about food ordering, housekeeping, WiFi, swimming pool timings, gym access, checkout details, or hotel location."

@@ -32,6 +32,10 @@ export default function ChatMessage({ message }) {
             backdropFilter: 'blur(10px)',
             boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
             color: 'var(--text-primary)',
+            paddingLeft: "10px",
+            paddingTop: "5px",
+            paddingBottom: "5px",
+            paddingRight: "10px",
           }}
         >
           <p className="text-sm md:text-base leading-relaxed">{message.text}</p>

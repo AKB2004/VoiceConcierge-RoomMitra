@@ -5,12 +5,13 @@ export default function LandingPage({ onGetStarted }) {
     <div className="min-h-screen flex flex-col items-center justify-center px-5 md:px-10 relative z-10">
       {/* Logo Title */}
       <h1 
-        className="text-3xl md:text-5xl font-bold tracking-wider  mb-16 md:mb-20 uppercase"
+        className="text-3xl md:text-5xl font-bold tracking-wider   uppercase"
         style={{
-  marginTop: '-10px',
+  marginTop: '-30px',
   background: 'linear-gradient(135deg, var(--text-primary) 0%, var(--accent-secondary) 100%)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
+  marginBottom: "30px",
   backgroundClip: 'text',
 }}
 
@@ -72,12 +73,6 @@ export default function LandingPage({ onGetStarted }) {
         >
           Welcome to Voice Concierge 
         </h2>
-        <p 
-          className="text-base md:text-lg leading-relaxed"
-          style={{ color: 'var(--text-secondary)' }}
-        >
-          Press the microphone button to start speaking. I'm here to help with room service, housekeeping, and hotel information.
-        </p>
       </div>
 
       {/* Get Started Button */}
@@ -87,6 +82,8 @@ export default function LandingPage({ onGetStarted }) {
         style={{
           background: 'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%)',
           boxShadow: '0 10px 40px rgba(99, 102, 241, 0.4)',
+          marginTop: "20px",
+          padding:"10px"
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'translateY(-5px)'
