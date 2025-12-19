@@ -2,6 +2,8 @@
 
 An AI-powered hotel voice assistant web application built with Next.js, featuring Speech-to-Text (STT) and Text-to-Speech (TTS) capabilities.
 
+vercel deployment link: https://voice-concierge-room-mitra.vercel.app/
+
 ## 🌟 Features
 
 - ✅ **Voice Input**: Browser-based speech recognition (STT)
